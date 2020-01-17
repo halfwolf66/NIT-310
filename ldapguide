@@ -1,0 +1,18 @@
+#!bin/bash
+yum install -y git
+cd /tmp
+git clone https://github.com/nic-instruction/hello-nti-310.git
+yum install -y openldap-servers openldap-clients
+cp /usr/share/openldap-servers/DB_CONFIG.example /var/lib/ldap/DB_CONFIG
+chown ldap. /var/lib/ldap/DB_CONFIG
+systemctl enable slapd
+systemctl start slapd
+yum install -y httpd phpldapadmin
+setsebool -P httpd_can_connect_ldap on
+systemctl enable httpd
+systemctl start httpd
+sed -i 's,Require local,#Require local\n   Require all granted,'g /etc/httpd/conf.d/phpldapadmin.conf
+unalias cp
+cp /etc/phpldapadmin/config.php /etc/phpldapadmin/config.php.orig
+grep 'config."blowfish" /etc/phpldapadmin.php.orig
+rightkey=$( grep 'config."blowfish' /etc/phpldapadmin/config.php.orig )
