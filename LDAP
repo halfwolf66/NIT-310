@@ -2,7 +2,7 @@
 
 yum install -y git 
 cd /tmp
-git clone https://github.com/halfwolf66/NIT-310
+git clone
 
 yum install -y openldap-servers openldap-clients
 
