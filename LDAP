@@ -2,7 +2,7 @@
 
 yum install -y git 
 cd /tmp
-git clone https://github.com/nic-instruction/hello-nti-310.git
+git clone https://github.com/halfwolf66/NIT-310
 
 yum install -y openldap-servers openldap-clients
 
@@ -34,7 +34,7 @@ chown ldap:apache /etc/phpldapadmin/config.php
 systemctl restart httpd
 
 echo "phpldapadmin is now up and running" 
-echo "we are configuring ldap and ldapadmin
+echo "we are configuring ldap and ldapadmin"
 #Generates and stores new passwd securely
 newsecret=${slappasswd -g)
 newhash=$(slappasswd -s "$newsecret")
