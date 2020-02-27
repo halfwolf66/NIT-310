@@ -57,7 +57,7 @@ firewall-cmd --zone=trusted --add-service openvpn
 firewall-cmd --zone=trusted --add-service openvpn --permanent
 firewall-cmd --list-services --zone=trusted
 #at thispoint we have to open tcp and udp to port 1194 on google cloud firewall
-forewall-cmd --add-masquerade
+firewall-cmd --add-masquerade
 firewall-cmd --permanent --add-masquerade
 firewall-cmd --query-masquerade
 SHARK=$(ip route get 8.8.8.8 | awk 'NR==1 {print $(NF-2)}')
