@@ -24,11 +24,11 @@ openvpn --genkey --secret /etc/openvpn/myvpn.tlsauth
 mkdir /etc/openvpn/easy-rsa/keys
 # vim /etc/openvpn/easy-rsa/vars
 yum install bind-utils
-# our ip's resolve to http://35.222.224.173.bc.googleusercontent.com/
+# our ip's resolve to http://173.224.222.35.bc.googleusercontent.com/
 # you can find this using nslookup
 # so this becomes our CN
 # vim /etc/openvpn/easy-rsa/vars
-# export KEY_CN="35.222.224.173.bc.googleuserconetent.com"
+# export KEY_CN="173.224.222.35.bc.googleusercontent.com"
 # export KEY_NAME-"server"
 # export KEy_OU="College"
 
@@ -68,7 +68,7 @@ firewall-cmd --reload
 # this can be echo'ed in automation
 systemctl restart network.service
 systemctl -f enable openvpnserver@server.service
-systemctl start openvpy@server.service
+systemctl start openvpn@server.service
 systemctl status openvpn@server.service
 #find the following on the server for your client:
 # /etc/openvpn/easy-rsa/keys/ca.crt
@@ -76,7 +76,7 @@ systemctl status openvpn@server.service
 # /etc/openvpn/easy-rsa/keys/client.key
 # /etc/openvpn/myvpn.tlsauth
 mkdir /tmp/client
-cp /etc/openvpn/easy-rsa/keys/ca.crt /temp/client
+cp /etc/openvpn/easy-rsa/keys/ca.crt /tmp/client
 cp /etc/openvpn/easy-rsa/keys/client.crt /tmp/client
 cp /etc/openvpn/easy-rsa/keys/client.key /tmp/client
 cp /etc/openvpn/myvpn.tlsauth /tmp/client
