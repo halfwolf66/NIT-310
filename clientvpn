@@ -1,0 +1,15 @@
+client
+tls-client
+ca C:\Users\kmccormick\Downloads\client\ca.crt
+cert C:\Users\kmccormick\Downloads\client\client.crt
+key C:\Users\kmccormick\Downloads\client\client.key
+tls-crypt C:\Users\kmccormick\Downloads\client\myvpn.tlsauth
+remote-cert-eku "TLS Web Server Authentication"
+proto udp
+remote 35.232.239.197 1194 udp
+dev tun
+topology subnet
+pull
+user nobody
+group nobody
+dhcp-option DNS 8.8.8.8
