@@ -18,7 +18,7 @@ sed -i 's/#nss_base_passwd.[ \t]*ou=People,dc=padl,dc=com?one/nss_base_passwd   
 sed -i 's/#nss_base_shadow.[ \t]*ou=People,dc=padl,dc=com?one/nss_base_shadow        ou=People,dc=nti310,dc=local/g' /etc/ldap.conf
 
 systemctl restart sshd
-echo "LK8RiXUV" > /etc/ldap.secret
+echo "Pa$$w0rd" > /etc/ldap.secret
 chmod 0600 /etc/ldap.secret
 systemctl restart libnss-ldap
 apt -y install debconf-utils
@@ -37,3 +37,5 @@ ldap-auth-config        ldap-auth-config/ldapns/ldap-server     string      ldap
 ldap-auth-config        ldap-auth-config/binddn string  cn=proxyuser,dc=example,dc=net" > /tmp/ldap_debconf
 
 while read line; do echo "$line" | debconf-set-selections; done < /tmp/ldap_debconf
+
+
