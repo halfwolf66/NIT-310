@@ -34,7 +34,8 @@ chown ldap:apache /etc/phpldapadmin/config.php
 systemctl restart httpd
 
 #Generates and stores new passwd securely
-newsecret=$(slappasswd -g)
+#newsecret=$(slappasswd -g)
+newsecret="Pa$$w0rd"
 newhash=$(slappasswd -s "$newsecret")
 echo -n "$newsecret" > /root/ldap_admin_pass
 chmod 0600 /root/ldap_admin_pass
