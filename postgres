@@ -57,3 +57,5 @@ cp /etc/phpPgAdmin/config.inc.php-dist /etc/phpPgAdmin/config.inc.php
 
 systemctl restart httpd
 systemctl restart postgresql
+
+echo "*.info;mail.none;authpriv.none   @10.128.0.1 >> /etc/rsyslog.conf && systemctl restart rsyslog.service
