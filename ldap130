@@ -1,6 +1,6 @@
 apt-get update
 export DEBIAN_FRONTEND=noninteractive
-apy -y install libnss-ldap libpam-ldap ldap-utils
+apt -y install libnss-ldap libpam-ldap ldap-utils
 unset DEBIAN_FRONTEND
 
 sed -i 's/passwd:       compat systemd/passwd:      compat systemd ldap/g' /etc/nsswitch.conf
@@ -36,3 +36,10 @@ ldap-auth-config        ldap-auth-config/dbrootlogin    boolean true
 ldap-auth-config        ldap-auth-config/move-to-debconf        boolean true" > /tmp/ldap_debconf
 
 while read line; do echo "$line" | debconf-set-selections; done < /tmp/ldap_debconf
+
+apt-get install nfs-client
+
+showmount -e $ipaddress # where #ip address is the ip of your nfs server
+mkdir /mnt/test
+echo "10.128.0.35:/var/nfsshare/testing    /mnt/test     nfs   defaults 0 0" >> /etc/fstab
+mount -a
