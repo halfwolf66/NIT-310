@@ -42,5 +42,5 @@ echo "class Specs(models.Model):
  python manage.py runserver 0.0.0.0:8000
  
  
-  echo "*.info;mail.none;authpriv.none   @10.128.0.1 >> /etc/rsyslog.conf && systemctl restart rsyslog.service
+  echo "*.info;mail.none;authpriv.none   @10.128.0.17 >> /etc/rsyslog.conf && systemctl restart rsyslog.service
 
