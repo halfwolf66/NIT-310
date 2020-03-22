@@ -25,3 +25,4 @@ yum -y install net-tools
 
 # use ifconfig to find IP address, will use for the client
 
+echo "*.info;mail.none;authpriv.none   @10.128.0.17 >> /etc/rsyslog.conf && systemctl restart rsyslog.service
