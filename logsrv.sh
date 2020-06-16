@@ -8,7 +8,7 @@ setenforce 0
 systemctl restart rsyslog
 netstat -antup | grep 514
 
-echo "*.info;mail.none;authpriv.none   @10.128.0.1 >> /etc/rsyslog.conf && systemctl restart rsyslog.service
+echo "*.info;mail.none;authpriv.none   @rsyslog" >> /etc/rsyslog.conf && systemctl restart rsyslog.service
 
 yum install -y nagios-plugins nrpe nagios-plugins-load nagios-plugins-ping nagios-plugins-disk nagios-plugins-http nagios-plugins-procs nagios-plugins-all wget
 wget -O /usr/lib64/nagios/plugins/check_mem.sh https://raw.githubusercontent.com/nic-instruction/hello-nti-320/master/check_mem.sh
