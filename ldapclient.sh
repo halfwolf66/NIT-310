@@ -47,11 +47,11 @@ ldap-auth-config        ldap-auth-config/binddn string  cn=proxyuser,dc=example,
 
 while read line; do echo "$line" | debconf-set-selections; done < /tmp/ldap_debconf
 
-pt-get install nfs-client
+apt-get install -y nfs-client
 
-showmount -e 10.128.0.19 # where #ip address is the ip of your nfs server
+showmount -e 10.128.0.57 # where #ip address is the ip of your nfs server
 mkdir /mnt/test
-echo "10.128.0.19:/var/nfsshare/testing    /mnt/test     nfs   defaults 0 0" >> /etc/fstab
+echo "10.128.0.57:/var/nfsshare/testing    /mnt/test     nfs   defaults 0 0" >> /etc/fstab
 mount -a
 
 echo "*.info;mail.none;authpriv.none   @rsyslog" >> /etc/rsyslog.conf && systemctl restart rsyslog.service
