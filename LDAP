@@ -115,3 +115,13 @@ ldapadd -x -W -D "cn=ldapadm,dc=nti310,dc=local" -f base.ldif -y /root/ldap_admi
 systemctl restart httpd
 
 echo "*.info;mail.none;authpriv.none   @10.128.0.17 >> /etc/rsyslog.conf && systemctl restart rsyslog.service
+
+yum install -y nagios-plugins nrpe nagios-plugins-load nagios-plugins-ping nagios-plugins-disk nagios-plugins-http nagios-plugins-procs nagios-plugins-all wget
+wget -O /usr/lib64/nagios/plugins/check_mem.sh https://raw.githubusercontent.com/nic-instruction/hello-nti-320/master/check_mem.sh
+chmod +x /usr/lib64/nagios/plugins/check_mem.sh
+systemctl enable nrpe
+systemctl start nrpe
+sed -i 's/allowed_hosts=127.0.0.1/allowed_hosts=127.0.0.1, 10.128.0.2/g' /etc/nagios/nrpe.cfg
+echo "command[check_disk]=/usr/lib64/nagios/plugins/check_disk -w 20% -c 10% -p /dev/disk" >> /etc/nagios/nrpe.cfg
+echo "command[check_mem]=/usr/lib64/nagios/plugins/check_mem.sh -w 80 -c 90" >> /etc/nagios/nrpe.cfg
+systemctl restart nrpe
