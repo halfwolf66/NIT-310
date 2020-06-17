@@ -1,5 +1,5 @@
 #!/bin/bash
-
+ip="10.128.0.53
 echo "[nti-320]
 name=Extra Packages for Centos from NTI-320 7 - $basearch
 #baseurl=http://download.fedoraproject.org/pub/epel/7/$basearch <- example epel repo
