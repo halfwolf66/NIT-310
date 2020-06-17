@@ -1,5 +1,6 @@
 #!/bin/bash
 for file in $( ls /etc/yum.repos.d/ ); do mv /etc/yum.repos.d/$file /etc/yum.repos.d/$file.bak; done
+ip="10.128.0.53"
 echo "[nti-310-epel]
 name=NTI310 EPEL
 baseurl=http://104.197.59.12/epel
