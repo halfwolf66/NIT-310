@@ -54,5 +54,5 @@ mkdir /mnt/test
 echo "10.128.0.8:/var/nfsshare/testing    /mnt/test     nfs   defaults 0 0" >> /etc/fstab
 mount -a
 
-echo "*.info;mail.none;authpriv.none   @rsyslog" >> /etc/rsyslog.conf && systemctl restart rsyslog.service
+
 
